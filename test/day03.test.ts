@@ -2,6 +2,8 @@
 
 import { part1, part2 } from '../src/day03';
 import { getDecimalFromBinary, getGamma, getEpsilon } from '../src/day03/part1';
+import { filterByLeastCommon, filterByMostCommon } from '../src/day03/part2';
+import { getIntFromBinary } from '../src/day03/part2';
 
 const getMockData = () => {
   const testData = '00100\n11110\n10110\n10111\n10101\n01111\n00111\n11100\n10000\n11001\n00010\n01010'
@@ -26,6 +28,15 @@ test('part one test', () => {
   expect(part1(mockData)).toBe(198);
 });
 
-xtest('part two test', () => {
-  expect(part2("")).toBe(0);
+test('filterByMostCommon test', () => {
+  expect(getIntFromBinary(filterByMostCommon(getMockData()))).toBe(23)
+})
+
+test('filterByLeastCommon test', () => {
+  expect(getIntFromBinary(filterByLeastCommon(getMockData()))).toBe(10)
+})
+
+test('part two test', () => {
+  const mockData = getMockData().join('\n');
+  expect(part2(mockData)).toBe(230)
 });
